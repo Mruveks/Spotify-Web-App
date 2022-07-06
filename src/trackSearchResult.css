@@ -1,0 +1,23 @@
+.track_container{
+    cursor: pointer;
+    background: #2e3c54;
+    border-radius: 25px;
+    border: 1px solid #fff;
+    text-align: center;
+    color: #fff;
+}
+
+.track_container:hover{
+    background: #839dbf;
+    color: white
+}
+
+.track_container > div{
+    font-size: 15px;
+    padding: 0 5px 5px 5px;
+}
+
+.track_container > img {
+    border-radius: 15px;
+    padding-top: 5px;
+}

@@ -10,6 +10,15 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+app.get('/login', function(req, res) {
+  var scopes = 'user-read-private user-read-email';
+  res.redirect('https://accounts.spotify.com/authorize' +
+  '?response_type=code' +
+  '&client_id=' + my_client_id +
+  (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+  '&redirect_uri=' + encodeURIComponent(REDIRECT_URI));
+  });
+  
 app.post("/refresh", (req, res) => {
   const refreshToken = req.body.refreshToken
   const spotifyApi = new SpotifyWebApi({
@@ -54,6 +63,8 @@ app.post("/login", (req, res) => {
       res.sendStatus(400)
     })
 })
+
+
 
 app.get("/lyrics", async (req, res) => {
   const lyrics =
